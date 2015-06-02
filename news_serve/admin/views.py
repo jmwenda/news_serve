@@ -43,15 +43,6 @@ class MyView(BaseView):
 		if not self.is_accessible():
 			return redirect('/')
 
-class UsersView(MyView):
-    @expose('/')
-    @login_required
-    def index(self):
-    	print self.is_accessible()
-    	print self.is_authenticated()
-    	print User.query.all()
-        return self.render('admin/users.html', users=User.query.all())
-
 class CatsView(MyView):
     @expose('/')
     @login_required
