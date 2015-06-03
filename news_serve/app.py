@@ -15,7 +15,7 @@ from news_serve.extensions import (
 )
 from news_serve import public, user, admin
 from flask.ext.admin.contrib.sqla import ModelView
-from .admin.views import UsersView, CatsView, MyModelView, MyHomeView
+from .admin.views import CatsView, MyModelView, MyHomeView
 from flask.ext.admin import Admin
 from news_serve.user.models import User
 
