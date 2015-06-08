@@ -11,13 +11,17 @@ from news_serve.extensions import (
     login_manager,
     migrate,
     debug_toolbar,
-   # admin,
 )
-from news_serve import public, user, admin
+from news_serve import public, user, admin, story, translation, recording
 from flask.ext.admin.contrib.sqla import ModelView
 from .admin.views import CatsView, MyModelView, MyHomeView
 from flask.ext.admin import Admin
 from news_serve.user.models import User
+from news_serve.story.models import Story
+from news_serve.util.models import Language, Tag
+from news_serve.translation.models import Translation
+from news_serve.recording.models import Recording
+
 
 
 def create_app(config_object=ProdConfig):
@@ -49,11 +53,15 @@ def register_extensions(app):
     amin.add_view(CatsView(name='Cats'))
 
     return None
+    import pdb; pdb.set_trace()  # XXX BREAKPOINT
 
 
 def register_blueprints(app):
     app.register_blueprint(public.views.blueprint)
     app.register_blueprint(user.views.blueprint)
+    app.register_blueprint(story.views.blueprint)
+    app.register_blueprint(recording.views.blueprint)
+    app.register_blueprint(translation.views.blueprint)
     return None
 
 
