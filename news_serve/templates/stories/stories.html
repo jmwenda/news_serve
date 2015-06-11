@@ -3,5 +3,10 @@
 {% block content %}
     <h1>Welcome {{ session.username }}</h1>
     <h3>This is the stories page.</h3>
+    <ul id="listofstories"></ul>
+    {% for story in stories %}
+    <li><a href="{{url_for('.story', id = story.id)}}">{{ story.title }}</a>  {{story.id}}</li>
+    {% endfor %}
+    </ul>
 {% endblock %}
 

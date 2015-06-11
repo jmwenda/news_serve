@@ -51,7 +51,11 @@ def register_extensions(app):
     amin = Admin(app,index_view=MyHomeView())
     amin.add_view(MyModelView(User, db.session))
     amin.add_view(CatsView(name='Cats'))
-
+    amin.add_view(MyModelView(Story, db.session))
+    amin.add_view(MyModelView(Translation, db.session))
+    amin.add_view(MyModelView(Recording, db.session))
+    amin.add_view(MyModelView(Language, db.session))
+    amin.add_view(MyModelView(Tag, db.session))
     return None
     import pdb; pdb.set_trace()  # XXX BREAKPOINT
 
@@ -59,7 +63,7 @@ def register_extensions(app):
 def register_blueprints(app):
     app.register_blueprint(public.views.blueprint)
     app.register_blueprint(user.views.blueprint)
-    app.register_blueprint(story.views.blueprint)
+    app.register_blueprint(story.views.story_blueprint)
     app.register_blueprint(recording.views.blueprint)
     app.register_blueprint(translation.views.blueprint)
     return None

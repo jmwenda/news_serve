@@ -20,10 +20,10 @@ class Recording(SurrogatePK, Model):
     translation_id= ReferenceCol('translations', nullable=True)
     translation = relationship('Translation', backref='recordings')
 
-    def __init__(self, title, **kwargs):
-        db.Model.__init__(self, story=story, **kwargs)
+    def __init__(self, **kwargs):
+        db.Model.__init__(self, **kwargs)
 
     def __repr__(self):
-        return '<Recording({title})>'.format(title=self.story.title)
+        return '<Recording({title})>'.format(title=self.translation.story.title)
 
 

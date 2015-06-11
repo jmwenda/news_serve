@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template
 from flask.ext.login import login_required
 
-blueprint = Blueprint("translation", __name__, url_prefix='/translations',
+blueprint = Blueprint("translate", __name__, url_prefix='/translations',
                       static_folder="../static")
 
 

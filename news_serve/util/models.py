@@ -13,7 +13,7 @@ class Language(SurrogatePK, Model):
     title = Column(db.String(80), unique=True, nullable=False)
 
 
-    def __init__(self, title, **kwargs):
+    def __init__(self, title="", **kwargs):
         db.Model.__init__(self, title=title, **kwargs)
 
     def __repr__(self):
@@ -23,7 +23,7 @@ class Tag(SurrogatePK, Model):
     __tablename__ = 'tags'
     title = Column(db.String(80), unique=True, nullable=False)
 
-    def __init__(self, title, **kwargs):
+    def __init__(self, title="", **kwargs):
         db.Model.__init__(self, title=title, **kwargs)
 
     def __repr__(self):

@@ -22,8 +22,8 @@ class Translation(SurrogatePK, Model):
     language_id = ReferenceCol('languages', nullable=True)
     language = relationship('Language', backref = 'translations')
 
-    def __init__(self, title, **kwargs):
-        db.Model.__init__(self, story=story, **kwargs)
+    def __init__(self, **kwargs):
+        db.Model.__init__(self, **kwargs)
 
     def __repr__(self):
         return '<Translation({title})>'.format(title=self.story.title)

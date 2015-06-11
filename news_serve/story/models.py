@@ -24,7 +24,7 @@ class Story(SurrogatePK, Model):
     language = relationship('Language', backref = 'stories')
 
 
-    def __init__(self, title, **kwargs):
+    def __init__(self, title="", **kwargs):
         db.Model.__init__(self, title=title, **kwargs)
 
     def __repr__(self):
