@@ -1,28 +1,18 @@
 
 {% extends "layout.html" %}
 {% block content %}
-<!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="jumbotron">
-
-  <h1>Translations</h1>
-
-  <p>Please choose an active translation to approve or modify.</p>
-  <p><a href="https://github.com/sloria/cookiecutter-flask" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-</div><!-- /.jumbotron -->
-
-<div class="body-content">
-  <div class="row">
-    <div class="col-lg-3">
-      <h2><i class="fa fa-pencil-square-o"></i> Edit</h2>
-      <p>Help by contributing stories that might be of interest to folks in Aber, Pabbo, Kitgum, or Patongo.</p>
-      <p><a class="btn btn-default" href="http://getbootstrap.com/">Edit List&raquo;</a></p>
-    </div>
-    <div class="col-lg-3">
-      <h2><i class="fa fa-files-o"></i> Translate</h2>
-      <p>Know Acholi or Luo?  Please help us by translating these stories.</p>
-      <p><a href="http://www.sqlalchemy.org/" class="btn btn-default" href="#">Translate List&raquo;</a></p>
-   </div>
-  </div><!-- /.row -->
-</div>
+    <h1>Welcome {{ session.username }}</h1>
+    <h3>Stories ready to translate:</h3>
+    <ul id="listofstories"></ul>
+    {% for story in stories %}
+        <li> {{ story.title }}<br>
+            {% for language in languages %}
+                {% if language != story.language %}
+                    <a href="{{url_for('.delegate', story_id = 2, language_id = 1)}}"> {{language.title}} </a> | 
+                {% endif %}
+            {% endfor %}
+        </li>
+    {% endfor %}
+    </ul>
 {% endblock %}
 

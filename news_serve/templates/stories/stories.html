@@ -2,11 +2,17 @@
 {% extends "layout.html" %}
 {% block content %}
     <h1>Welcome {{ session.username }}</h1>
-    <h3>This is the stories page.</h3>
+    <h3>Open stories not yet ready to translate:</h3>
     <ul id="listofstories"></ul>
     {% for story in stories %}
-    <li><a href="{{url_for('.story', id = story.id)}}">{{ story.title }}</a>  {{story.id}}</li>
+        <li><a href="{{url_for('.story', id = story.id)}}">{{ story.title }}</a>  
+            {% for translation in story.translations %} *{{translation}} {% endfor %}
+        </li>
     {% endfor %}
     </ul>
-{% endblock %}
+    <br><br>
+    <form method="GET" action="{{ request.path }}new_story"> 
+        <button type="submit" name="submit_button" value="New" class="btn btn-default">Create a New Story</button>
+    </form>
+    {% endblock %}
 

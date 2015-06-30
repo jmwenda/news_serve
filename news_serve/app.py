@@ -65,7 +65,7 @@ def register_blueprints(app):
     app.register_blueprint(user.views.blueprint)
     app.register_blueprint(story.views.story_blueprint)
     app.register_blueprint(recording.views.blueprint)
-    app.register_blueprint(translation.views.blueprint)
+    app.register_blueprint(translation.views.translation_blueprint)
     return None
 
 
