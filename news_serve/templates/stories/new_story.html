@@ -1,0 +1,23 @@
+
+{% extends "layout.html" %}
+{% block content %}
+    <h1>Welcome {{ session.username }}</h1>
+    <h3>Create a new story.</h3>
+    <h4></h4>
+
+       {% if form %}
+       <form id="StoryForm" method="POST" class="" action={{ request.path }} role="login">
+      {{ form.hidden_tag() }}
+      <div class="form-group">
+        Title:<br> {{ form.title()}}<br>
+        Slug:<br> {{ form.slug }}<br>
+        Text:<br> {{ form.text(cols="30", rows="20",class_="form-control") }}<br>
+      </div>
+      <button type="submit" name="submit_button" value="Save" class="btn btn-default">Save and Continue</button>
+      <button type="submit" name="submit_button" value="Translate" class="btn btn-default">Save and Ready to Translate</button>
+
+    </form>
+    {% endif %}
+{% endblock %}
+
+
