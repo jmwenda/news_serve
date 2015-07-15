@@ -45,3 +45,7 @@ docs/_build
 # Virtualenvs
 env
 env*
+
+#Specific files and folders
+migrations/
+dev.db
