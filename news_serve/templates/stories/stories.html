@@ -2,10 +2,10 @@
 {% extends "layout.html" %}
 {% block content %}
     <h1>Welcome {{ session.username }}</h1>
-    <h3>Open stories not yet ready to translate:</h3>
+    <h3>Stories:</h3>
     <ul id="listofstories"></ul>
     {% for story in stories %}
-        <li><a href="{{url_for('.story', id = story.id)}}">{{ story.title }}</a>  
+        <li><a href="{{url_for('.story', id = story.id)}}">{{ story.title }}</a>{% if story.ready_to_translate %} Ready to Translate {% else %} {% endif %}  
             {% for translation in story.translations %} *{{translation}} {% endfor %}
         </li>
     {% endfor %}
