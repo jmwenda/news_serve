@@ -47,5 +47,4 @@ env
 env*
 
 #Specific files and folders
-migrations/
 dev.db
