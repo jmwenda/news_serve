@@ -8,6 +8,7 @@ from flask_migrate import MigrateCommand
 
 from news_serve.app import create_app
 from news_serve.user.models import User
+from news_serve.util.models import Language
 from news_serve.settings import DevConfig, ProdConfig
 from news_serve.database import db
 
@@ -33,6 +34,12 @@ def test():
     import pytest
     exit_code = pytest.main([TEST_PATH, '--verbose'])
     return exit_code
+@manager.command
+def fixtures():
+    language = Language('Luganda')
+    db.session.add(language)
+    db.session.commit()
+
 
 manager.add_command('server', Server())
 manager.add_command('shell', Shell(make_context=_make_context))
