@@ -8,7 +8,7 @@
         <li> {{ story.title }}<br>
             {% for language in languages %}
                 {% if language != story.language %}
-                    <a href="{{url_for('.delegate', story_id = 2, language_id = 1)}}"> {{language.title}} </a> | 
+                    <a href="{{url_for('.delegate', story_id = story.id, language_id = language.id)}}"> {{language.title}} </a> | 
                 {% endif %}
             {% endfor %}
         </li>

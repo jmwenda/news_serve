@@ -20,14 +20,14 @@
         {{ form.text(cols="30", rows="20",class_="form-control") }}
       </div>
       <button type="submit" name="submit_button" value="Save" class="btn btn-default">Save and Continue</button>
-      <button type="submit" name="submit_button" value="Translate" class="btn btn-default">Save and Ready to Translate</button>
+      <button type="submit" name="submit_button" value="Translate" class="btn btn-default">Save and Ready to Record</button>
 
     </form>
     {% endif %}
     </div>
     
     <div class="col-xs-6">
-      <p><pre>{{story.text}}</pre></p>
+      <p><pre>{{translation.story.text}}</pre></p>
    </div>
   </div><!-- /.row -->
 </div>
