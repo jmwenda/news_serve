@@ -50,7 +50,6 @@ def delegate(story_id, language_id):
            st_translation.ready_to_record = True
        db.session.add(st)
        db.session.commit()
-
     return render_template("translations/delegatetranslation.html", translation=st_translation, form=form)
 
     #WUERY for translation with story_id and language
