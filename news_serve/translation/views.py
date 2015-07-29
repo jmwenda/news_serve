@@ -23,19 +23,7 @@ def translations():
 @login_required
 def translation(id):
     st = Story.query.filter_by(id=id).first_or_404()
-    form = TranslationForm(obj=st)
-    form.populate_obj(st)
-    if request.method == "POST":
-       st.text = form.text.data
-       if request.form.get('submit_button')== "Save":
-           flash("Story saved.", 'success')
-       if request.form.get('submit_button')== "Translate":
-           flash("Story Ready To Translate.", 'success')
-           st.ready_to_translate = True
-       db.session.add(st)
-       db.session.commit()
-
-    return render_template("translations/translation.html", story=st, form=form)
+    return render_template("translations/translation.html", story=st)
 
 @translation_blueprint.route("/delegate/<int:story_id>/<int:language_id>", methods=["POST","GET"])
 @login_required

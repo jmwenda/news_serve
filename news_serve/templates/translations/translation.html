@@ -5,29 +5,19 @@
 <div class="jumbotron">
 
   <h1>Translations</h1>
-
-  <p>Please choose an active translation to approve or modify.</p>
+  <p>{{story.text}}</p>
 </div><!-- /.jumbotron -->
 
 <div class="body-content">
   <div class="row">
     <div class="col-xs-6">
-
-       {% if form %}
-       <form id="TranslationForm" method="POST" class="" action={{ request.path }} role="login">
-      {{ form.hidden_tag() }}
-      <div class="form-group">
-        {{ form.text(cols="30", rows="20",class_="form-control") }}
-      </div>
-      <button type="submit" name="submit_button" value="Save" class="btn btn-default">Save and Continue</button>
-      <button type="submit" name="submit_button" value="Translate" class="btn btn-default">Save and Ready to Translate</button>
-
-    </form>
-    {% endif %}
+      {% for translation in story.translations %}
+      <div class=""><h2><a href="{{url_for('.delegate', story_id = story.id, language_id = translation.language.id)}}">{{translation.language.title}} Translation</a></h2>
+      <p>{{translation.text}}</p></div>
+    {% endfor %}
     </div>
     
     <div class="col-xs-6">
-      <p><pre>{{story.text}}</pre></p>
    </div>
   </div><!-- /.row -->
 </div>
