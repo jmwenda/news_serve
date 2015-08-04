@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, flash, request, redirect, url_for
 from flask.ext.login import login_required
 from news_serve.app import db
 from models import Recording
@@ -21,11 +21,14 @@ def record(id):
     trans = Translation.query.get_or_404(id)
     if trans.ready_to_record == True:
         record = get_or_create(db.session, Recording,translation_id=id,translation=trans,text="")
-    form = RecordForm(obj=record)
-    form.populate_obj(record)
+        st_record = Recording.query.filter_by(translation_id=trans.id,translation=trans).first_or_404()
+    	form = RecordForm(obj=st_record)
+   	form.populate_obj(st_record)
     if request.method == "POST":
-       if request.form.get('submit_button')== "Save":
-           flash("Story saved.", 'success')
-       db.session.add(st)
-       db.session.commit()
-    return render_template("recordings/record.html",record=record,translation=translation,form=form)
+        st_record.text = form.text.data
+        st_record.ready_to_broadcast = form.ready_to_broadcast.data
+        if request.form.get('submit_button')== "Save":
+            flash("Recording saved.", 'success')
+        db.session.add(st_record)
+        db.session.commit()
+    return render_template("recordings/record.html",record=st_record,translation=trans,form=form)

@@ -1,14 +1,17 @@
 
 {% extends "layout.html" %}
 {% block content %}
-    <h1>Welcome {{ session.username }}</h1>
+    <h1>{{record.translation.story.title}}</h1>
+    </h2>Language translation: {{record.translation.story.language}} to {{record.translation.language.title}}</h2>
 
        {% if form %}
        <form id="RecordForm" method="POST" class="" action={{ request.path }} role="login">
-      {{ form.hidden_tag() }}
+        {{ form.hidden_tag() }}
       <div class="form-group">
-        {{ form.text(cols="30", rows="20",class_="form-control") }}
+        Recording text:<br>{{ form.text(cols="30", rows="20",class_="form-control") }}
+        Ready to broadcast:<br> {{form.ready_to_broadcast()}}
       </div>
+      <button type="submit" name="submit_button" value="Save" class="btn btn-default">Save</button>
 
     </form>
     {% endif %}
@@ -16,5 +19,3 @@
          <p><pre>{{record.translation.story.text}}</pre></p>
 
 {% endblock %}
-
-
