@@ -9,10 +9,9 @@
         {{ form.hidden_tag() }}
       <div class="form-group">
         Recording text:<br>{{ form.text(cols="30", rows="20",class_="form-control") }}
-        Ready to broadcast:<br> {{form.ready_to_broadcast()}}
       </div>
       <button type="submit" name="submit_button" value="Save" class="btn btn-default">Save</button>
-
+      <button type="submit" name="submit_button" value="Broadcast" class="btn btn-default">Ready To Broadcast</button>
     </form>
     {% endif %}
 
