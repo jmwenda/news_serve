@@ -43,8 +43,8 @@ docs/_build
 .webassets-cache
 
 # Virtualenvs
-env
-env*
+#env
+#env*
 
 #Specific files and folders
 dev.db
