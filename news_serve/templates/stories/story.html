@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 {% block content %}
     <h1>Welcome {{ session.username }}</h1>
-    <h3>Edit story; click "Ready to Translate" to move it to the translate queue.</h3>
+    <h3>Edit story: click "Ready to Translate" to move it to the translate queue.</h3>
     <h4>{{ story.title }}: {{story.slug}} </h4>
 
        {% if form %}
