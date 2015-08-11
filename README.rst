@@ -25,6 +25,12 @@ Then run the following commands to bootstrap your environment.
     pip install -r requirements/dev.txt
     python manage.py server
 
+If you are running the development environment remember to export the DATABASE_URL. This is simply because this is what is used on heroku to access
+the database resource on the production environment
+
+	export DATABASE_URL = 'postgresql://localhost/example'
+
+
 You will see a pretty welcome screen.
 
 Once you have installed your DBMS, run the following to create your app's database tables and perform the initial migration:
